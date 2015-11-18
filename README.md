@@ -163,7 +163,7 @@ In this case, if .article-link > .count did not have the > (child) selector, it 
 
 
 ### How do you apply margins outside a layout? Try it with Helpers. ###
-
+___
 For general-purpose classes meant to override values, put them in a separate file and name them beginning with an underscore. They are typically things that are tagged with !important. Use them very sparingly.
 
 ```less
@@ -173,7 +173,7 @@ For general-purpose classes meant to override values, put them in a separate fil
 ._pull-right { float: right !important; }
 ```
 
-### Naming helpers ### 
+### Naming helpers
 ---
 Prefix classnames with an underscore. This will make it easy to differentiate them from modifiers defined in the component. Underscores also look a bit ugly which is an intentional side effect: using too many helpers should be discouraged.
 
