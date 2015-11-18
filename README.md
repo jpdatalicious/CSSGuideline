@@ -51,9 +51,6 @@ Each component may have elements. They should have classes that are only *one wo
 }
 ```
 
-
-
-
 ### Avoid tag selectors ###
 ---
 Use classnames whenever possible. Tag selectors are fine, but they may come at a small performance penalty and may not be as descriptive.
