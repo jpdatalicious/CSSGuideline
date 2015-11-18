@@ -1,5 +1,5 @@
 
-### Datalicions Front-end Best Practice Guidelines ###
+### Opinionated Datalicions Front-end Best Practice Guidelines ###
 
 **Goal**
 * Foster code consistency
