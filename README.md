@@ -40,6 +40,19 @@ Components will be named with at least two words, separated by a dash. Examples 
 ___
 Elements are things inside your component.
 
+### Naming Elements ###
+___
+Each component may have elements. They should have classes that are only *one word.*
+
+```less
+.search-form {
+  > .field { /* ... */ }
+  > .action { /* ... */ }
+}
+```
+
+
+
 
 ### Avoid tag selectors ###
 ---
@@ -204,30 +217,36 @@ Namespacing your classes keeps your components self-contained and modular. It mi
 Sometimes, when nesting components, your markup can get dirty:
 
 ```html
-<div class='search-form'>
-  <input class='input' type='text'>
-  <button class='search-button -red -large'></button>
+<div class="modal-footer">
+  <button class="btn btn-raised cancel" data-dismiss="modal">Cancel</button>
 </div>
 ```
 
 You can simplify this by using your CSS preprocessor's @extend mechanism:
 
 ```html
-<div class='search-form'>
-  <input class='input' type='text'>
-  <button class='submit'></button>
+<div class="modal-footer">
+  <button class="cancel" data-dismiss="modal">Cancel</button>
 </div>
 ```
 
 ```less
-.search-form {
-  > .submit {
-    @extend .search-button;
-    @extend .search-button.-red;
-    @extend .search-button.-large;
-  }
-}
+.modal-footer {
+      background: @gray-3;
+
+      > .cancel {
+          &:extend(.btn);
+          color: @gray-4;
+          background: @white;
+
+          &:hover {
+            &:extend(.btn:hover);
+          }
+      }
+}      
 ```
+
+
 
 ### Create your HTML First ###
 ___
