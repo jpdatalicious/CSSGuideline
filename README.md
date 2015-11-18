@@ -1,4 +1,16 @@
 
+### Think in components ###
+---
+Consider each piece of your UI as an individual "component".
+
+### Naming components ###
+---
+Components will be named with at least two words, separated by a dash. Examples of components:
+
+ * A like button (.like-button)
+ * A search form (.search-form)
+ * A news article card (.article-card)
+
 
 ### One component per file ###
 ```less
@@ -37,6 +49,45 @@ Use no more than 1 level of nesting. It's easy to get lost with too much nesting
   > .description > .icon { /* ... */ }
 }
 ```
+
+### Avoid positioning properties ###
+---
+Components should be made in a way that they're reusable in different contexts. Avoid putting these properties in components:
+ * Positioning (position, top, left, right, bottom)
+ * Floats (float, clear)
+ * Margins (margin)
+ * Dimensions (width, height) *
+
+### Fixed dimensions ###
+___
+Exception to these would be elements that have fixed width/heights, such as avatars and logos.
+
+
+### Define positioning in parents ###
+___
+If you need to define these, try to define them in whatever context they will be in. In this example below, notice that the widths and floats are applied on the list component, not the component itself.
+
+
+```
+.article-list {
+  & {
+    @include clearfix;
+  }
+
+  > .article-card {
+    width: 33.3%;
+    float: left;
+  }
+}
+
+.article-card {
+  & { /* ... */ }
+  > .image { /* ... */ }
+  > .title { /* ... */ }
+  > .category { /* ... */ }
+}
+```
+
 
 ### Bleeding through nested components ###
 ___
@@ -86,6 +137,49 @@ margin-bottom: 12px;
 margin-left: 0;
 ```
 
+### Namespace your classe ###
+___
+Namespacing your classes keeps your components self-contained and modular. It minimizes the likelihood that an existing class will conflict, and it lowers the specificity required to style child elements.
+
+```less
+/* High risk of style cross-contamination */
+.widget { }
+.widget .title { }
+
+/* Low risk of style cross-contamination */
+.widget { }
+.widget-title { }
+```
+
+### Simplifying nested components ###
+---
+Sometimes, when nesting components, your markup can get dirty:
+
+```html
+<div class='search-form'>
+  <input class='input' type='text'>
+  <button class='search-button -red -large'></button>
+</div>
+```
+
+You can simplify this by using your CSS preprocessor's @extend mechanism:
+
+```html
+<div class='search-form'>
+  <input class='input' type='text'>
+  <button class='submit'></button>
+</div>
+```
+
+```less
+.search-form {
+  > .submit {
+    @extend .search-button;
+    @extend .search-button.-red;
+    @extend .search-button.-large;
+  }
+}
+```
 
 ### Create your HTML First ###
 ___
