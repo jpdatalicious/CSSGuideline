@@ -26,12 +26,29 @@ Components will be named with at least two words, separated by a dash. Examples 
 }
 ```
 
+### Elements ###
+___
+Elements are things inside your component.
+
+
+### Avoid tag selectors ###
+---
+Use classnames whenever possible. Tag selectors are fine, but they may come at a small performance penalty and may not be as descriptive.
+
+```less
+.article-card {
+  > h3    { /* ✗ avoid */ }
+  > .name { /* ✓ better */ }
+}
+```
+
+
 ### Avoid over nesting ###
 ___
 Use no more than 1 level of nesting. It's easy to get lost with too much nesting.
 
 
-```less/
+```less
 /* ✗ Avoid: 3 levels of nesting */
 .image-frame {
   > .description {
@@ -123,6 +140,18 @@ Be careful about nested components with elements sharing the same name as elemen
 In this case, if .article-link > .count did not have the > (child) selector, it will also apply to the .vote-box .count element. This is one of the reasons why child selectors are preferred.
 
 
+### How do you apply margins outside a layout? Try it with Helpers. ##
+
+For general-purpose classes meant to override values, put them in a separate file and name them beginning with an underscore. They are typically things that are tagged with !important. Use them very sparingly.
+
+```less
+._unmargin { margin: 0 !important; }
+._center { text-align: center !important; }
+._pull-left { float: left !important; }
+._pull-right { float: right !important; }
+```
+
+
 ### Use Shorthand CSS ###
 
 ```less
@@ -137,7 +166,7 @@ margin-bottom: 12px;
 margin-left: 0;
 ```
 
-### Namespace your classe ###
+### Namespace your classes ###
 ___
 Namespacing your classes keeps your components self-contained and modular. It minimizes the likelihood that an existing class will conflict, and it lowers the specificity required to style child elements.
 
