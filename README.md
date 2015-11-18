@@ -194,3 +194,6 @@ Many designers create their CSS at the same time they create the HTML. It seems 
 * Name variants with a dash prefix (.shop-banner.-with-icon)
 * Components can nest
 * Remember you can extend to make things simple
+
+
+Credits: http://ricostacruz.com/rscss/index.html
