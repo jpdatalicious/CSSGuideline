@@ -1,4 +1,14 @@
 
+### Datalicions Front-end Best Practice Guidelines ###
+
+**Goal**
+* Foster code consistency
+* Ease of maintenance
+* Ensure create professional grade front-end
+* Guide staff on-boarding or educate new developers
+
+
+
 ### Think in components ###
 ---
 Consider each piece of your UI as an individual "component".
@@ -151,6 +161,15 @@ For general-purpose classes meant to override values, put them in a separate fil
 ._pull-right { float: right !important; }
 ```
 
+### Naming helpers ### 
+---
+Prefix classnames with an underscore. This will make it easy to differentiate them from modifiers defined in the component. Underscores also look a bit ugly which is an intentional side effect: using too many helpers should be discouraged.
+
+```less
+<div class='order-graphs -slim _unmargin'>
+</div>
+```
+
 
 ### Use Shorthand CSS ###
 
@@ -213,6 +232,29 @@ You can simplify this by using your CSS preprocessor's @extend mechanism:
 ### Create your HTML First ###
 ___
 Many designers create their CSS at the same time they create the HTML. It seems logical to create both at the same time, but actually you’ll save even more time if you create the entire HTML mockup first. The reasoning behind this method is that you know all the elements of your site layout, but you don’t know what CSS you’ll need with your design. Creating the HTML layout first allows you to visualize the entire page as a whole, and allows you to think of your CSS in a more holistic, top-down manner
+
+
+### Apprehensions ###
+___
+Some people may have apprehensions to these conventions, such as:
+
+
+####"But dashes suck"####
+
+You're free to omit them and just use regular words, but keep the rest of the ideas in place (components, elements, variants).
+
+####"But I can't think of 2 words!"####
+
+Some components will only need one word to express their purpose, such as alert. In these cases, consider that using some suffixes will make it clearer that it's a block-level element:
+
+* .alert-box
+* .alert-card
+* .alert-block
+* 
+Or for inlines:
+
+* .link-button
+* .link-span
 
 
 ### Summary ###
