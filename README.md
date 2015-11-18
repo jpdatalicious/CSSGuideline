@@ -105,7 +105,7 @@ ___
 If you need to define these, try to define them in whatever context they will be in. In this example below, notice that the widths and floats are applied on the list component, not the component itself.
 
 
-```
+```less
 .article-list {
   & {
     @include clearfix;
@@ -240,6 +240,10 @@ You can simplify this by using your CSS preprocessor's @extend mechanism:
       }
 }      
 ```
+
+*Caveat*
+You need to import the less file in case you're extending a class not declared in the same file 
+e.g. `@import "../../bootstrap/buttons.less";` for importing `btn` Bootstrap class.
 
 
 
