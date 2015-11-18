@@ -144,7 +144,6 @@ Be careful about nested components with elements sharing the same name as elemen
   <h3 class='title'>Article title</h3>
   <p class='count'>3 votes</p>
 </article>
-
 ```
 
 ```less
@@ -163,7 +162,7 @@ Be careful about nested components with elements sharing the same name as elemen
 In this case, if .article-link > .count did not have the > (child) selector, it will also apply to the .vote-box .count element. This is one of the reasons why child selectors are preferred.
 
 
-### How do you apply margins outside a layout? Try it with Helpers. ##
+### How do you apply margins outside a layout? Try it with Helpers. ###
 
 For general-purpose classes meant to override values, put them in a separate file and name them beginning with an underscore. They are typically things that are tagged with !important. Use them very sparingly.
 
@@ -182,7 +181,6 @@ Prefix classnames with an underscore. This will make it easy to differentiate th
 <div class='order-graphs -slim _unmargin'>
 </div>
 ```
-
 
 ### Use Shorthand CSS ###
 
