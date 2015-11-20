@@ -273,7 +273,7 @@ Some components will only need one word to express their purpose, such as alert.
 * .alert-card
 * .alert-block
 
-Or for inlines:
+or for inlines:
 
 * .link-button
 * .link-span
