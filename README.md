@@ -15,11 +15,12 @@ Consider each piece of your UI as an individual "component".
 
 ### Naming components ###
 ---
-Components will be named with at least two words, separated by a dash. Examples of components:
 
- * A like button (.like-button)
- * A search form (.search-form)
- * A news article card (.article-card)
+Components will be named with at least two words, prefixed with `st`, separated by a dash. Examples of components:
+
+ * A like button (.st-like-button)
+ * A search form (.st-search-form)
+ * A news article card (.st-article-card)
 
 
 ### One component per file ###
@@ -42,12 +43,12 @@ Elements are things inside your component.
 
 ### Naming Elements ###
 ___
-Each component may have elements. They should have classes that are only *one word.*
+Each component may have elements. They should have classes that are only *one word.* prefixed with `st` to avoid namespace coallition.
 
 ```less
 .search-form {
-  > .field { /* ... */ }
-  > .action { /* ... */ }
+  > .st-field { /* ... */ }
+  > .st-btn-cancel { /* ... */ }
 }
 ```
 
@@ -56,7 +57,7 @@ Each component may have elements. They should have classes that are only *one wo
 Use classnames whenever possible. Tag selectors are fine, but they may come at a small performance penalty and may not be as descriptive.
 
 ```less
-.article-card {
+.st-article-card {
   > h3    { /* ✗ avoid */ }
   > .name { /* ✓ better */ }
 }
@@ -70,7 +71,7 @@ Use no more than 1 level of nesting. It's easy to get lost with too much nesting
 
 ```less
 /* ✗ Avoid: 3 levels of nesting */
-.image-frame {
+.st-image-frame {
   > .description {
     /* ... */
 
@@ -93,12 +94,7 @@ Components should be made in a way that they're reusable in different contexts. 
  * Positioning (position, top, left, right, bottom)
  * Floats (float, clear)
  * Margins (margin)
- * Dimensions (width, height) *
-
-### Fixed dimensions ###
-___
-Exception to these would be elements that have fixed width/heights, such as avatars and logos.
-
+ * Dimensions (width, height) 
 
 ### Define positioning in parents ###
 ___
@@ -125,38 +121,42 @@ If you need to define these, try to define them in whatever context they will be
 }
 ```
 
+### Fixed dimensions ###
+___
+Exception to these would be elements that have fixed width/heights, such as avatars and logos.
+
 
 ### Bleeding through nested components ###
 ___
 Be careful about nested components with elements sharing the same name as elements in its container.
 
 ```html
-<article class='article-link'>
- <div class='vote-box'>
-    <button class='up'></button>
-    <button class='down'></button>
-    <span class='count'>4</span>
+<article class='st-article-link'>
+ <div class='st-vote-box'>
+    <button class='st-up'></button>
+    <button class='st-down'></button>
+    <span class='st-count'>4</span>
   </div>
 
-  <h3 class='title'>Article title</h3>
-  <p class='count'>3 votes</p>
+  <h3 class='st-title'>Article title</h3>
+  <p class='st-count'>3 votes</p>
 </article>
 ```
 
 ```less
-.article-link {
-  > .title { /* ... */ }
-  > .count { /* ... (!!!) */ }
+.st-article-link {
+  > .st-title { /* ... */ }
+  > .st-count { /* ... (!!!) */ }
 }
 
-.vote-box {
-  > .up { /* ... */ }
-  > .down { /* ... */ }
-  > .count { /* ... */ }
+.st-vote-box {
+  > .st-up { /* ... */ }
+  > .st-down { /* ... */ }
+  > .st-count { /* ... */ }
 }
 ```
 
-In this case, if .article-link > .count did not have the > (child) selector, it will also apply to the .vote-box .count element. This is one of the reasons why child selectors are preferred.
+In this case, if `.st-article-link > .count` did not have the `>` (child) selector, it will also apply to the `.st-vote-box .st-count` element. **This is one of the reasons why child selectors are preferred**.
 
 
 ### How do you apply margins outside a layout? Try it with Helpers. ###
