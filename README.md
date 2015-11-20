@@ -24,12 +24,14 @@ Components will be named with at least two words, prefixed with `st`, separated 
 
 
 ### One component per file ###
+___
+
 ```less
 /* css/components/search-form.less */
-.search-form {
-  > .button { /* ... */ }
-  > .field { /* ... */ }
-  > .label { /* ... */ }
+.st-search-form {
+  > .st-button { /* ... */ }
+  > .st-field { /* ... */ }
+  > .st-label { /* ... */ }
 
   // variants
   &.-small { /* ... */ }
@@ -46,7 +48,7 @@ ___
 Each component may have elements. They should have classes that are only *one word.* prefixed with `st` to avoid namespace coallition.
 
 ```less
-.search-form {
+.st-search-form {
   > .st-field { /* ... */ }
   > .st-btn-cancel { /* ... */ }
 }
@@ -199,20 +201,22 @@ Namespacing your classes keeps your components self-contained and modular. It mi
 
 ```less
 /* High risk of style cross-contamination */
-.widget { }
-.widget .title { }
+.st-widget { }
+.st-widget .title { }
 
 /* Low risk of style cross-contamination */
-.widget { }
-.widget-title { }
+.st-widget { }
+.st-widget-title { }
 ```
+
+Supertag's namespace is `st-`.
 
 ### Simplifying nested components ###
 ---
 Sometimes, when nesting components, your markup can get dirty:
 
 ```html
-<div class="modal-footer">
+<div class="st-modal-footer">
   <button class="btn btn-raised cancel" data-dismiss="modal">Cancel</button>
 </div>
 ```
@@ -226,13 +230,13 @@ You can simplify this by using your CSS preprocessor's @extend mechanism:
 ```
 
 ```less
-.modal-footer {
-      background: @gray-3;
+.st-modal-footer {
+      background: #333;
 
       > .cancel {
           &:extend(.btn);
-          color: @gray-4;
-          background: @white;
+          color: #333;
+          background: #fff;
 
           &:hover {
             &:extend(.btn:hover);
